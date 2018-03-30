@@ -4,6 +4,8 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.appcompat.*;
+
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,7 +18,15 @@ public class MainActivity extends AppCompatActivity {
     private final int PRIORITY = 0;
     private final float NORMAL_PLAY_RATE = 1.0f;
 
-    // TODO: Add member variables here
+    private SoundPool sp;
+    private int soundIDC;
+    private int soundIDA;
+    private int soundIDB;
+    private int soundIDD;
+    private int soundIDE;
+    private int soundIDF;
+    private int soundIDG;
+
     private int mCSoundId;
     private int mDSoundId;
     private int mESoundId;
@@ -30,16 +40,40 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // TODO: Create a new SoundPool
-
-
-        // TODO: Load and get the IDs to identify the sounds
-
+        //Deprecated since Api 21
+        sp = new SoundPool(NR_OF_SIMULTANEOUS_SOUNDS, AudioManager.STREAM_MUSIC, 0);
+        soundIDC = sp.load(getApplicationContext(), R.raw.note1_c, 1);
+        soundIDD = sp.load(getApplicationContext(), R.raw.note2_d, 1);
+        soundIDE = sp.load(getApplicationContext(), R.raw.note3_e, 1);
+        soundIDF = sp.load(getApplicationContext(), R.raw.note4_f, 1);
+        soundIDG = sp.load(getApplicationContext(), R.raw.note5_g, 1);
+        soundIDA = sp.load(getApplicationContext(), R.raw.note6_a, 1);
+        soundIDB = sp.load(getApplicationContext(), R.raw.note7_b, 1);
 
     }
 
     // TODO: Add the play methods triggered by the buttons
 
-
+    public void playC(View v) {
+        sp.play(soundIDC, LEFT_VOLUME, RIGHT_VOLUME, PRIORITY, NO_LOOP, NORMAL_PLAY_RATE);
+    }
+    public void playB(View v) {
+        sp.play(soundIDB, LEFT_VOLUME, RIGHT_VOLUME, PRIORITY, NO_LOOP, NORMAL_PLAY_RATE);
+    }
+    public void playA(View v) {
+        sp.play(soundIDA, LEFT_VOLUME, RIGHT_VOLUME, PRIORITY, NO_LOOP, NORMAL_PLAY_RATE);
+    }
+    public void playD(View v) {
+        sp.play(soundIDD, LEFT_VOLUME, RIGHT_VOLUME, PRIORITY, NO_LOOP, NORMAL_PLAY_RATE);
+    }
+    public void playE(View v) {
+        sp.play(soundIDE, LEFT_VOLUME, RIGHT_VOLUME, PRIORITY, NO_LOOP, NORMAL_PLAY_RATE);
+    }
+    public void playF(View v) {
+        sp.play(soundIDF, LEFT_VOLUME, RIGHT_VOLUME, PRIORITY, NO_LOOP, NORMAL_PLAY_RATE);
+    }
+    public void playG(View v) {
+        sp.play(soundIDG, LEFT_VOLUME, RIGHT_VOLUME, PRIORITY, NO_LOOP, NORMAL_PLAY_RATE);
+    }
 
 }
